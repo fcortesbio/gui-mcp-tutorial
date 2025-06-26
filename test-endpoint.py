@@ -1,9 +1,16 @@
+import os
 import requests
 
+# Read key from environment variable
+
+BRD_API_KEY = os.getenv("BRD_API_KEY")
+if not BRD_API_KEY:
+    raise RuntimeError("BRD_API_KEY not found in local environment.")
+
 headers = {
-    "Authorization": "Bearer 1fecd79436b306e400fa6e1b313c2eec9a16445688b00d97e25899fbd157a5ad",
+    "Authorization": f"Bearer {BRD_API_KEY}",
     "Content-Type": "application/json"
-}
+    }
 data = {
     "zone": "unlocker_mcp",
     "url": "https://geo.brdtest.com/welcome.txt?product=unlocker&method=api",
